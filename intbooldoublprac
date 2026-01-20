@@ -1,0 +1,49 @@
+public class Main {
+    public static void main(String[] args) {
+        int currentHour = 12;
+        double soilMoisture = 45.5;
+        double temperature = 22.3;
+        boolean isRaining = false;
+        boolean shouldWaterPlants = (soilMoisture < 30.0) && !isRaining && (currentHour >= 21 && currentHour <= 6);
+        if (temperature > 95.0) {
+            shouldWaterPlants = true;
+        }
+        double totalWaterNeeded = 0.0;
+        if (shouldWaterPlants) {
+            totalWaterNeeded = (100.0 - soilMoisture) * 0.5;
+        }
+        else {
+            totalWaterNeeded = 0.0;
+        }
+        System.out.println("Should water plants: " + shouldWaterPlants);
+        System.out.println("Total water needed (liters): " + totalWaterNeeded);
+    }
+}
+
+/* The Challenge: The Automated Irrigation Controller
+Prompt: Write a Java code segment for an irrigation system. You are given the following input variables (assume they are already declared and initialized):
+
+int currentHour: The current hour of the day (0–23).
+
+double soilMoisture: The percentage of moisture in the soil (0.0–100.0).
+
+double temperature: The current temperature in Fahrenheit.
+
+boolean isRaining: Whether it is currently raining.
+
+Requirements:
+
+Declare a boolean variable named shouldWater.
+
+The system should water (shouldWater = true) only if:
+
+It is not raining.
+
+The soilMoisture is less than 30.0%.
+
+The currentHour is either in the early morning (before 6 AM) or late evening (after 9 PM / hour 21).
+
+Override Rule: If the temperature is above 95.0 degrees, the system must water regardless of the hour, as long as it is not raining and the moisture is below 30.0%.
+
+Calculate the double totalWaterNeeded. If shouldWater is true, the amount is (100.0 - soilMoisture) * 0.5. If shouldWater is false, the amount is 0.0.
+*/
