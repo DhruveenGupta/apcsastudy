@@ -4,16 +4,13 @@ public class Main {
         double soilMoisture = 45.5;
         double temperature = 22.3;
         boolean isRaining = false;
-        boolean shouldWaterPlants = (soilMoisture < 30.0) && !isRaining && (currentHour >= 21 && currentHour <= 6);
+        boolean shouldWaterPlants = (soilMoisture < 30.0) && !isRaining && (currentHour >= 21 || currentHour <= 6);
         if (temperature > 95.0) {
             shouldWaterPlants = true;
         }
         double totalWaterNeeded = 0.0;
         if (shouldWaterPlants) {
             totalWaterNeeded = (100.0 - soilMoisture) * 0.5;
-        }
-        else {
-            totalWaterNeeded = 0.0;
         }
         System.out.println("Should water plants: " + shouldWaterPlants);
         System.out.println("Total water needed (liters): " + totalWaterNeeded);
